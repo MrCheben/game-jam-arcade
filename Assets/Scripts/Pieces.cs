@@ -11,6 +11,7 @@ public class Pieces : MonoBehaviour
     private MeshRenderer meshRenderer;
     public string styleArc;
     public int PieceArc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +37,25 @@ public class Pieces : MonoBehaviour
             styleArc = "Arc0";
             meshFilter.sharedMesh = Arc0[PieceArc].GetComponent<MeshFilter>().sharedMesh;
             meshRenderer.material = Arc0[PieceArc].GetComponent<Renderer>().sharedMaterial;
+            transform.localScale = Arc0[PieceArc].transform.localScale;
+            transform.localRotation = Arc0[PieceArc].transform.localRotation;
+            gameObject.AddComponent<BoxCollider>();
         } else if (randomArc == 1) {
             styleArc = "Arc1";
             meshFilter.sharedMesh = Arc1[PieceArc].GetComponent<MeshFilter>().sharedMesh;
             meshRenderer.material = Arc1[PieceArc].GetComponent<Renderer>().sharedMaterial;
+            transform.localScale = Arc1[PieceArc].transform.localScale;
+            transform.localRotation = Arc1[PieceArc].transform.localRotation;
+            gameObject.AddComponent<BoxCollider>();
         }
         
 
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.tag == "Plan"){
+            other.gameObject.GetComponent<Plan>().IncrusterPiece(this.gameObject);
+        }
     }
 
 }

@@ -8,22 +8,53 @@ public class Sculpteur : MonoBehaviour
     public GameObject prefabPiece;
     [SerializeField] private float DistanceSpawnPiece;
     [SerializeField] private Vector3 ForceSpawnPiece;
+    [SerializeField] private Vector3 OriginForceSpawnPiece;
+    [SerializeField] private float countRow;
+    [SerializeField] private float countColumn;
+    public float maxColumn;
+    private Vector3 originPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        originPosition = transform.position;
+        ForceSpawnPiece = OriginForceSpawnPiece;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.A)) {
             InvokePiece();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B)) {
+            MoveSculpteur();
         }
     }
 
     void InvokePiece() {
-        var newPiece = Instantiate(prefabPiece,new Vector3(transform.position.x+ DistanceSpawnPiece, transform.position.y, -0.2f),Quaternion.identity);
+
+        ForceSpawnPiece.y = ForceSpawnPiece.y - 5;
+        var newPiece = Instantiate(prefabPiece,new Vector3(transform.position.x, transform.position.y, transform.position.z + DistanceSpawnPiece), transform.rotation);
         newPiece.GetComponent<Rigidbody>().AddForce(ForceSpawnPiece, ForceMode.Impulse);
+        countRow++;
+        if(countRow == 3) {
+            countRow = 0;
+            ForceSpawnPiece = OriginForceSpawnPiece;
+            MoveSculpteur();
+        }
+    }
+
+    void MoveSculpteur() {
+
+
+        transform.position = new Vector3(transform.position.x+4.995f, transform.position.y, transform.position.z);
+        countColumn++;
+        if (countColumn == 3) {
+            countColumn = 0;
+            transform.position = originPosition;
+        }
+
     }
 }

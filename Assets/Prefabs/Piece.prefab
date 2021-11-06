@@ -105,8 +105,15 @@ MonoBehaviour:
   - {fileID: 5788947972266260821, guid: 350b0f3079478be42965fc0436f853f4, type: 3}
   - {fileID: 4892407700662250596, guid: c60be8c092d013f48a90c3fc1356328e, type: 3}
   - {fileID: 1734583910319587601, guid: b952f75c18d32a54fa443d91c29bbcd7, type: 3}
+  Arc2:
+  - {fileID: 7609908697131167635, guid: 1ead594499192d84397c7ca2ebd13235, type: 3}
+  - {fileID: 964352781009172682, guid: 097cb479cd096674299ab989b5c13114, type: 3}
+  - {fileID: 7945508018731683767, guid: c3420ee9d81059b419369122e941959d, type: 3}
+  - {fileID: 7609908697131167635, guid: 9c3ebbf2081d9f745ad5e34c410d0c2c, type: 3}
   styleArc: 
   PieceArc: 0
+  isPorter: 0
+  player: {fileID: 0}
 --- !u!54 &826394445788822777
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Commande : MonoBehaviour
     public float espacement;
     [SerializeField] private GameObject[] Arc0;
     [SerializeField] private GameObject[] Arc1;
-    [SerializeField] private List<string> pieces;
+    [SerializeField] public List<string> pieces;
     // Start is called before the first frame update
     void Start()
     {

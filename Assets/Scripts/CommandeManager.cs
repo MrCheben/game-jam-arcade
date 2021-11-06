@@ -11,6 +11,7 @@ public class CommandeManager : MonoBehaviour
     public float timeSinceLastCommande;
     [SerializeField] private Vector3 vectorPlacement;
     public float distanceBetweenCommande;
+    public List<GameObject> listCommande;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class CommandeManager : MonoBehaviour
     void newCommande() {
         var newCommande=Instantiate(prefabCommande, transform.position + vectorPlacement,Quaternion.identity);
         newCommande.transform.parent = gameObject.transform;
+        listCommande.Add(newCommande);
         vectorPlacement.x += distanceBetweenCommande;
         timeSinceLastCommande = 0;
     }

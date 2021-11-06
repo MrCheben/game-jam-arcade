@@ -45,9 +45,11 @@ public class Commande : MonoBehaviour
         if (randomArc == 0) {
             var newPiece=Instantiate(Arc0[currentPiece], transform.position+vectorPlacement, Arc0[currentPiece].transform.rotation);
             newPiece.transform.parent = gameObject.transform;
+            newPiece.layer = 6;
         } else if (randomArc == 1) {
             var newPiece =  Instantiate(Arc1[currentPiece], transform.position+vectorPlacement, Arc1[currentPiece].transform.rotation);
             newPiece.transform.parent = gameObject.transform;
+            newPiece.layer = 6;
         }
         pieces.Add("" + randomArc + "-" + currentPiece);
         currentPiece++;

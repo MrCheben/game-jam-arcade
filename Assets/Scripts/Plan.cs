@@ -6,6 +6,7 @@ public class Plan : MonoBehaviour
 {
     public List<GameObject> pieceIncruster;
     public int nbPieceIncruster;
+    public bool checkPiece;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +19,37 @@ public class Plan : MonoBehaviour
         
     }
 
-    public void IncrusterPiece(GameObject piece) {
+    public void checkEmplacementPiece(GameObject piece) {
+
+        //if(pieceIncruster.Count >= 1) {
+            for (int i = 0; i < pieceIncruster.Count; i++) {
+                print(pieceIncruster[i].GetComponent<Pieces>().PieceArc);
+                if (pieceIncruster[i].GetComponent<Pieces>().PieceArc == piece.GetComponent<Pieces>().PieceArc) {
+                    checkPiece = true;
+                    print(true);
+                } else {
+                    checkPiece = false;
+                }
+            }
+
+            if (checkPiece == false) {
+                IncrusterPiece(piece);
+            }
+
+       /* } else {
+            IncrusterPiece(piece);
+            print("inf 0");
+        }*/
+
+
+    }
+
+    void IncrusterPiece(GameObject piece) {
         pieceIncruster.Add(piece);
         piece.GetComponent<BoxCollider>().enabled = false;
         piece.GetComponent<Rigidbody>().useGravity = false;
         piece.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
-        if(piece.GetComponent<Pieces>().PieceArc == 0) {
+        if (piece.GetComponent<Pieces>().PieceArc == 0) {
             piece.transform.position = transform.position+ new Vector3(-1,0,-1);
         } else if (piece.GetComponent<Pieces>().PieceArc == 1) {
             piece.transform.position = transform.position + new Vector3(-1, 0, 1);
@@ -45,6 +70,8 @@ public class Plan : MonoBehaviour
         nbPieceIncruster--;
 
     }
+
+
 
     void CheckCommande() {
 

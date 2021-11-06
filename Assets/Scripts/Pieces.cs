@@ -31,7 +31,6 @@ public class Pieces : MonoBehaviour
     void randomPiece() {
         var randomArc = Random.Range(0, 2);
         var randomPiece = Random.Range(0, 4);
-        print(randomPiece);
         PieceArc = randomPiece;
         if (randomArc == 0) {
             styleArc = "Arc0";
@@ -54,7 +53,7 @@ public class Pieces : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Plan"){
-            other.gameObject.GetComponent<Plan>().IncrusterPiece(this.gameObject);
+            other.gameObject.GetComponent<Plan>().checkEmplacementPiece(this.gameObject);
         }
     }
 

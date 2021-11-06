@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5404108410381227369}
   - component: {fileID: 6237332563833667658}
   - component: {fileID: 3961997325382131256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mur en dessous
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8441765868440146740}
   - component: {fileID: 8441765868440146739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Commande
   m_TagString: Untagged
   m_Icon: {fileID: 0}

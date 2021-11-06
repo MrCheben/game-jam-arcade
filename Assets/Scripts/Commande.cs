@@ -24,6 +24,7 @@ public class Commande : MonoBehaviour
         
     }
 
+
     void SetUpPlan() {
         for (int i = 0; i < MaxPiece; i++) {
             randomPiece();

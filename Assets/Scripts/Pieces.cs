@@ -11,6 +11,7 @@ public class Pieces : MonoBehaviour
     private MeshRenderer meshRenderer;
     public string styleArc;
     public int PieceArc;
+    private Quaternion RotationOrigin;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,10 @@ public class Pieces : MonoBehaviour
             transform.localScale = Arc0[PieceArc].transform.localScale;
             transform.localRotation = Arc0[PieceArc].transform.localRotation;
             gameObject.AddComponent<BoxCollider>();
+            gameObject.AddComponent<SphereCollider>();
+            gameObject.GetComponent<SphereCollider>().isTrigger = true;
+            gameObject.GetComponent<SphereCollider>().radius = 0.007f;
+
         } else if (randomArc == 1) {
             styleArc = "Arc1";
             meshFilter.sharedMesh = Arc1[PieceArc].GetComponent<MeshFilter>().sharedMesh;
@@ -47,14 +52,26 @@ public class Pieces : MonoBehaviour
             transform.localRotation = Arc1[PieceArc].transform.localRotation;
             gameObject.AddComponent<BoxCollider>();
         }
+        RotationOrigin = transform.rotation;
         
 
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Plan"){
+        if (other.tag == "Plan") {
             other.gameObject.GetComponent<Plan>().checkEmplacementPiece(this.gameObject);
+            gameObject.transform.parent = null;
+            print(RotationOrigin.eulerAngles);
+
+            //transform.rotation = new Vector3(RotationOrigin.eulerAngles, RotationOrigin.eulerAngles.y, RotationOrigin.eulerAngles.z);
+
+
+        } else if (other.tag == "Player") {
+            GetComponent<SphereCollider>().enabled = false;
+            gameObject.transform.parent = other.gameObject.transform;
         }
-    }
+        }
+
+
 
 }

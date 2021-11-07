@@ -12,11 +12,13 @@ public class Commande : MonoBehaviour
     [SerializeField] private GameObject[] Arc2;
     [SerializeField] private GameObject[] Arc3;
     [SerializeField] public List<string> pieces;
+    public int point;
 
     // Start is called before the first frame update
     void Start()
     {
         SetUpPlan();
+        point = Random.Range(150, 201);
     }
 
     // Update is called once per frame

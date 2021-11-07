@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
 
     public float moveSpeed = 5;
     public bool isPorting=false;
+    public float score;
     Camera viewCamera;
     PlayerController controller;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,13 +46,24 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetMouseButtonDown(0)) {
-            if (isPorting == false) {
-                controller.prendrePiece();
-            }
-        }
-        
 
 
     }
+
+
+
+   /* private void OnTriggerEnter(Collider other) {
+        print(other.name);
+    }*/
+
+    /*private void OnTriggerStay(Collider other) {
+        if (other.tag == "Piece") {
+            if (Input.GetMouseButtonDown(0)) {
+                if (isPorting == false) {
+                    controller.prendrePiece(other.gameObject);
+                }
+            }
+        }
+    }*/
+
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 826394445788822777}
   m_Layer: 0
   m_Name: Piece
-  m_TagString: Untagged
+  m_TagString: Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,8 +107,10 @@ MonoBehaviour:
   - {fileID: 5645850511191457220, guid: c9faa1bc875a290479874defd3f7bb45, type: 3}
   Arc4: []
   styleArc: 
+  styleArc2: 
   PieceArc: 0
   isPorter: 0
+  inPlan: 0
   player: {fileID: 0}
 --- !u!54 &826394445788822777
 Rigidbody:

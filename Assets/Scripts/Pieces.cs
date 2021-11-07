@@ -11,9 +11,11 @@ public class Pieces : MonoBehaviour
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
     public string styleArc;
+    public string styleArc2;
     public int PieceArc;
     private Quaternion RotationOrigin;
     public bool isPorter= false;
+    public bool inPlan = false;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -49,6 +51,7 @@ public class Pieces : MonoBehaviour
         
         if (randomArc == 2) {
             styleArc = "Arc2";
+            styleArc2 = "2";
             meshFilter.sharedMesh = Arc2[PieceArc].GetComponent<MeshFilter>().sharedMesh;
             meshRenderer.material = Arc2[PieceArc].GetComponent<Renderer>().sharedMaterial;
             transform.localScale = Arc2[PieceArc].transform.localScale;
@@ -57,6 +60,7 @@ public class Pieces : MonoBehaviour
 
         } else if (randomArc == 3) {
             styleArc = "Arc3";
+            styleArc2 = "3";
             meshFilter.sharedMesh = Arc3[PieceArc].GetComponent<MeshFilter>().sharedMesh;
             meshRenderer.material = Arc3[PieceArc].GetComponent<Renderer>().sharedMaterial;
             transform.localScale = Arc3[PieceArc].transform.localScale;
@@ -65,6 +69,7 @@ public class Pieces : MonoBehaviour
 
         } else if (randomArc == 4) {
             styleArc = "Arc4";
+            styleArc2 = "4";
             meshFilter.sharedMesh = Arc4[PieceArc].GetComponent<MeshFilter>().sharedMesh;
             meshRenderer.material = Arc4[PieceArc].GetComponent<Renderer>().sharedMaterial;
             transform.localScale = Arc4[PieceArc].transform.localScale;
@@ -86,27 +91,50 @@ public class Pieces : MonoBehaviour
         isPorter = false;
     }
 
+    public void piecePrise() {
+
+            GetComponent<SphereCollider>().enabled = false;
+            gameObject.transform.parent = player.gameObject.transform;
+            isPorter = true;
+
+        
+    }
+
     private void OnTriggerEnter(Collider other) {
+
         if (other.tag == "Plan") {
-            isPorter = false;
-            player.gameObject.GetComponent<Player>().isPorting = false;
-            // besoin de ne pas enelver des mains du joueur si deja remplit
-            other.gameObject.GetComponent<Plan>().checkEmplacementPiece(this.gameObject);
-            gameObject.transform.parent = null;
-            transform.rotation = Quaternion.Euler(RotationOrigin.eulerAngles);
+            if(inPlan == false) {
+                isPorter = false;
+                player.gameObject.GetComponent<Player>().isPorting = false;
+                // besoin de ne pas enelver des mains du joueur si deja remplit
+                other.gameObject.GetComponent<Plan>().checkEmplacementPiece(this.gameObject);
+                gameObject.transform.parent = null;
+                transform.rotation = Quaternion.Euler(RotationOrigin.eulerAngles);
+                inPlan = true;
+                GetComponent<SphereCollider>().enabled = false;
+            }
 
 
-        } else if (other.tag == "Player") {
-            if (other.gameObject.GetComponent<Player>().isPorting == false) {
+
+        }else if (other.tag == "Player") {
+            if (inPlan == false) {
+                if (other.gameObject.GetComponent<Player>().isPorting == false) {
+                    other.gameObject.GetComponent<Player>().isPorting = true;
+                    GetComponent<SphereCollider>().enabled = false;
+                    gameObject.transform.parent = other.gameObject.transform;
+                    isPorter = true;
+
+                }
+            } else if (inPlan == true) {
+                /*inPlan = false;
                 other.gameObject.GetComponent<Player>().isPorting = true;
                 GetComponent<SphereCollider>().enabled = false;
                 gameObject.transform.parent = other.gameObject.transform;
-                isPorter = true;
-
+                isPorter = true;*/
             }
 
         }
-        }
+    }
 
 
 

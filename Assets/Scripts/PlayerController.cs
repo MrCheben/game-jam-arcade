@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     Rigidbody myRigidbody;
     public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textTime;
     public float timeLeft;
     public GameObject canvasEnd;
     public GameObject canvasInGame;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
         timeLeft -= Time.deltaTime;
+        textTime.text = "Temps Restant : " + timeLeft;
         if (timeLeft < 0) {
             End();
         }
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     public void addScore(int point) {
         GetComponent<Player>().score += point;
-        textScore.text = ""+GetComponent<Player>().score;
+        textScore.text = "Score : "+GetComponent<Player>().score;
     }
 
 

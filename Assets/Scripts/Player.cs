@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 
     public float moveSpeed = 5;
-
+    public bool isPorting=false;
     Camera viewCamera;
     PlayerController controller;
 
@@ -35,5 +35,22 @@ public class Player : MonoBehaviour
             Debug.DrawLine(ray.origin, intersectionPoint, Color.red);
             controller.LookAt(intersectionPoint);
         }
+
+        if (Input.GetMouseButtonDown(1)) {
+            if(isPorting == true) {
+                controller.LacherPiece();
+            }
+            
+        }
+
+
+        if (Input.GetMouseButtonDown(0)) {
+            if (isPorting == false) {
+                controller.prendrePiece();
+            }
+        }
+        
+
+
     }
 }

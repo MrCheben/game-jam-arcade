@@ -28,4 +28,16 @@ public class PlayerController : MonoBehaviour
         myRigidbody.MovePosition(myRigidbody.position + velocity * Time.fixedDeltaTime);
     }
 
+    public void LacherPiece() {
+        if(this.transform.childCount != 0) {
+            this.transform.GetChild(0).GetComponent<Pieces>().pieceLacher();
+            GetComponent<Player>().isPorting = false;
+        }
+    }
+
+    public void prendrePiece() {
+      
+    }
+
+
 }

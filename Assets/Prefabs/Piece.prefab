@@ -95,21 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f80b6cfebed674181702bd8a4b63e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arc0:
-  - {fileID: 5612381488996748638, guid: 63341d6a3a48a3f4c99dfa78c80ff19e, type: 3}
-  - {fileID: 5788947972266260821, guid: da91c8f6363c1ed4d8b8c9749b61231b, type: 3}
-  - {fileID: 4892407700662250596, guid: f23b7b5d7c131aa42be649b44116e6e5, type: 3}
-  - {fileID: 1734583910319587601, guid: 1e54b62aa4b029540a1a4672657fd6b5, type: 3}
-  Arc1:
-  - {fileID: 5612381488996748638, guid: 0b2fc25c10ea62441bfb738b7a981644, type: 3}
-  - {fileID: 5788947972266260821, guid: 350b0f3079478be42965fc0436f853f4, type: 3}
-  - {fileID: 4892407700662250596, guid: c60be8c092d013f48a90c3fc1356328e, type: 3}
-  - {fileID: 1734583910319587601, guid: b952f75c18d32a54fa443d91c29bbcd7, type: 3}
   Arc2:
   - {fileID: 7609908697131167635, guid: 1ead594499192d84397c7ca2ebd13235, type: 3}
   - {fileID: 964352781009172682, guid: 097cb479cd096674299ab989b5c13114, type: 3}
   - {fileID: 7945508018731683767, guid: c3420ee9d81059b419369122e941959d, type: 3}
-  - {fileID: 7609908697131167635, guid: 9c3ebbf2081d9f745ad5e34c410d0c2c, type: 3}
+  - {fileID: 7609908697131167635, guid: 1ead594499192d84397c7ca2ebd13235, type: 3}
+  Arc3:
+  - {fileID: 5645850511191457220, guid: c9faa1bc875a290479874defd3f7bb45, type: 3}
+  - {fileID: 542887222740631725, guid: 6d1103c3a9a1d63419f844f2a6f2cc86, type: 3}
+  - {fileID: 7354067710133195760, guid: 6396e15374b0906458c157a018cfe9e2, type: 3}
+  - {fileID: 5645850511191457220, guid: c9faa1bc875a290479874defd3f7bb45, type: 3}
+  Arc4: []
   styleArc: 
   PieceArc: 0
   isPorter: 0

@@ -6,6 +6,7 @@ public class Sculpteur : MonoBehaviour
 {
 
     public GameObject prefabPiece;
+    [SerializeField] private float timeBetweenSculpt;
     [SerializeField] private float DistanceSpawnPiece;
     [SerializeField] private Vector3 ForceSpawnPiece;
     [SerializeField] private Vector3 OriginForceSpawnPiece;
@@ -19,18 +20,19 @@ public class Sculpteur : MonoBehaviour
     {
         originPosition = transform.position;
         ForceSpawnPiece = OriginForceSpawnPiece;
+        StartCoroutine(Scuplt());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) {
+       /* if (Input.GetKeyDown(KeyCode.A)) {
             InvokePiece();
         }
 
         if (Input.GetKeyDown(KeyCode.B)) {
             MoveSculpteur();
-        }
+        }*/
     }
 
     void InvokePiece() {
@@ -40,6 +42,7 @@ public class Sculpteur : MonoBehaviour
         newPiece.GetComponent<Rigidbody>().AddForce(ForceSpawnPiece, ForceMode.Impulse);
         countRow++;
         if(countRow == 3) {
+
             countRow = 0;
             ForceSpawnPiece = OriginForceSpawnPiece;
             MoveSculpteur();
@@ -57,4 +60,11 @@ public class Sculpteur : MonoBehaviour
         }
 
     }
+
+    IEnumerator Scuplt() {
+        InvokePiece();
+        yield return new WaitForSeconds(timeBetweenSculpt);
+        StartCoroutine(Scuplt());
+    }
+
 }
